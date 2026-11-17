@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">FEEHO Employee architecture</title><desc id="desc">A job objective and enterprise rules become an employee package, external agent results are evaluated against contracts, and a validated package can be exported.</desc>
+<rect width="1280" height="720" fill="#07090d"/>
+<text x="64" y="78" fill="#fff" font-family="Arial,sans-serif" font-size="36" font-weight="700">FROM JOB OBJECTIVE TO EVIDENCE</text>
+<text x="64" y="116" fill="#939ba8" font-family="Arial,sans-serif" font-size="18">The runtime stays model-agnostic. Acceptance stays explicit.</text>
+<g font-family="Arial,sans-serif">
+<rect x="64" y="190" width="250" height="150" rx="8" fill="#11151b" stroke="#3b414c"/><text x="88" y="232" fill="#ef3340" font-size="16" font-weight="700">INPUT</text><text x="88" y="276" fill="#fff" font-size="24">Job objective</text><text x="88" y="310" fill="#aab1bd" font-size="17">+ enterprise rules</text>
+<rect x="382" y="166" width="360" height="198" rx="8" fill="#151920" stroke="#ef3340"/><text x="408" y="210" fill="#ef3340" font-size="16" font-weight="700">EMPLOYEE PACKAGE</text><text x="408" y="252" fill="#fff" font-size="23">Role + instructions</text><text x="408" y="286" fill="#aab1bd" font-size="17">Permissions + handoffs</text><text x="408" y="320" fill="#aab1bd" font-size="17">Evaluation contracts</text>
+<rect x="810" y="190" width="250" height="150" rx="8" fill="#11151b" stroke="#3b414c"/><text x="834" y="232" fill="#ef3340" font-size="16" font-weight="700">EXTERNAL RUNTIME</text><text x="834" y="276" fill="#fff" font-size="24">Agent results</text><text x="834" y="310" fill="#aab1bd" font-size="17">Output + tool trace</text>
+</g>
+<path d="M314 265H382M742 265H810" stroke="#ef3340" stroke-width="3"/>
+<rect x="294" y="436" width="692" height="100" rx="8" fill="#201318" stroke="#cf2634"/><text x="640" y="478" fill="#fff" font-family="Arial,sans-serif" font-size="24" text-anchor="middle">CONTRACT EVALUATION</text><text x="640" y="510" fill="#c5c9d1" font-family="Arial,sans-serif" font-size="17" text-anchor="middle">Contains · tools · handoff · escalation · required cases</text>
+<path d="M562 364V436M935 340L800 436" stroke="#ef3340" stroke-width="3"/>
+<g font-family="Arial,sans-serif" font-size="19" text-anchor="middle"><rect x="210" y="606" width="330" height="58" rx="6" fill="#11151b" stroke="#3b414c"/><text x="375" y="642" fill="#fff">HUMAN REVIEW</text><rect x="740" y="606" width="330" height="58" rx="6" fill="#cf2634"/><text x="905" y="642" fill="#fff">PORTABLE ZIP</text></g>
+<path d="M480 536L375 606M800 536L905 606" stroke="#ef3340" stroke-width="3"/>
+</svg>

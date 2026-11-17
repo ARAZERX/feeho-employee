@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://feeho.cn/schemas/employee-v0.1.json",
+  "title": "FEEHO Employee Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "role", "objective", "status", "created_at"],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"},
+    "role": {"type": "string", "minLength": 2, "maxLength": 120},
+    "objective": {"type": "string", "minLength": 8, "maxLength": 4000},
+    "status": {"enum": ["draft", "accepted"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "enterprise": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    }
+  }
+}

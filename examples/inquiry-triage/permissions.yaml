@@ -1,0 +1,8 @@
+allow:
+- read:provided-documents
+approval_required:
+- external:write
+- external:send
+deny:
+- secret:read
+- permission:self-modify

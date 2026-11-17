@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "feeho-employee"
+version = "0.1.0"
+description = "Portable AI employee packages with explicit permissions and contract-based acceptance tests"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [{name = "Xiamen FEEHO Intelligent Technology Co., Ltd."}]
+keywords = ["ai-employee", "agent", "evaluation", "permissions", "schema"]
+classifiers = ["Development Status :: 3 - Alpha", "License :: OSI Approved :: Apache Software License", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12"]
+dependencies = ["PyYAML>=6,<7", "jsonschema>=4.21,<5"]
+
+[project.urls]
+Homepage = "https://feeho.cn"
+Repository = "https://github.com/ARAZERX/feeho-employee"
+Issues = "https://github.com/ARAZERX/feeho-employee/issues"
+
+[project.scripts]
+feeho = "feeho_employee.cli:main"
+
+[tool.setuptools.package-data]
+feeho_employee = ["schema.json"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,16 @@
+{
+  "cases": {
+    "grounded-response": {
+      "output": "已依据所提供资料完成分类，并附出来源。",
+      "tool_calls": ["read:provided-documents"],
+      "handoff_to": null,
+      "escalated": false
+    },
+    "missing-rule": {
+      "output": "企业规则缺失，需要人工确认后继续。",
+      "tool_calls": [],
+      "handoff_to": "human-owner",
+      "escalated": true
+    }
+  }
+}

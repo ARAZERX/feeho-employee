@@ -1,0 +1,86 @@
+# FEEHO Employee 员工生成器
+
+**把岗位目标整理成可移植员工包，用明确权限和验收合同检查真实 Agent 结果。**
+
+[English README](README.md)
+
+## 这是什么
+
+这是一个模型无关的开源合同工具，包含：
+
+- 通用岗位草案脚手架 `draft`
+- 员工包 Schema 与规则校验 `validate`
+- 外部 Agent 结果验收运行器 `test`
+- 可移植 ZIP 导出 `export`
+
+**一句话只能生成草案。**企业资料适配、权限边界、交接规则、外部结果与真人验收完成后，才可能成为正式员工。
+
+## 快速开始
+
+需要 Python 3.10+：
+
+```bash
+git clone https://github.com/ARAZERX/feeho-employee.git
+cd feeho-employee
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+```
+
+运行自带的虚构示例：
+
+```bash
+feeho validate examples/inquiry-triage
+feeho test examples/inquiry-triage \
+  --results examples/sample-results.json \
+  --report /tmp/feeho-report.json
+feeho export examples/inquiry-triage --output /tmp/inquiry-triage.zip
+```
+
+生成自己的通用草案：
+
+```bash
+feeho draft \
+  --role "询盘初筛" \
+  --objective "根据已批准资料分级询盘，并在企业规则缺失时转交人工。" \
+  --output /tmp/my-employee
+```
+
+## 员工包结构
+
+```text
+employee.yaml       身份、岗位目标、draft/accepted 状态
+role.md             岗位职责与企业规则
+instructions.md     工作规则
+permissions.yaml    允许、需审批、禁止的动作
+model-policy.yaml   模型策略，不保存凭证
+handoffs.yaml       异常、缺口和超时的交接对象
+evals/cases.yaml    输入与输出/工具验收合同
+acceptance.yaml     通过率、必过案例和真人复核
+```
+
+## 验收运行器怎样工作
+
+CLI 不调用模型。你用任意 Agent 运行时执行 `evals/cases.yaml`，再把每个 case 的真实输出、工具调用、交接和升级情况写成 JSON 传给 `feeho test`。
+
+v0.1 支持：输出必含/禁含、必须/禁止工具、指定交接对象、是否必须升级。缺结果会失败，不会把“文件格式正确”冒充“任务通过”。
+
+通过报告不会自动把 `draft` 改成 `accepted`；正式上岗仍需人工验收。
+
+## 当前边界
+
+v0.1 不提供托管模型、自主 Agent 运行时、多员工组织调度、企业审批审计、长期飞书/钉钉/企微协作或行业岗位包，也不提供平台专用导出器。
+
+这些组织与企业能力属于独立私有商业产品，见 [COMMERCIAL.md](COMMERCIAL.md)。
+
+## 测试与贡献
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+贡献流程见 [CONTRIBUTING.md](CONTRIBUTING.md)，安全问题见 [SECURITY.md](SECURITY.md)。不要提交密钥、客户资料或私有企业内容。
+
+## 许可证
+
+开源核心采用 [Apache License 2.0](LICENSE)，允许商业使用。企业合同不会收回或限制核心已经授予的 Apache-2.0 权利。
