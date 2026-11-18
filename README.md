@@ -32,6 +32,32 @@ General agent tools often stop at a prompt and a tool list. FEEHO separates four
 
 A passing contract report does not automatically change `status: draft` to `accepted`. Human acceptance is explicit.
 
+## What you can inspect
+
+A package is more than a prompt. Each concern has a file, an owner and an acceptance boundary:
+
+| Concern | Where it lives | What the CLI checks |
+|---|---|---|
+| Job objective | `employee.yaml`, `role.md` | Identity, objective, draft/accepted status |
+| Enterprise rules | `role.md`, `instructions.md` | Required documents and explicit adaptation notes |
+| Permissions | `permissions.yaml` | Allow / approval / deny lists and conflicts |
+| Exceptions | `handoffs.yaml` | Destination and trigger for handoff or escalation |
+| Acceptance | `evals/cases.yaml`, `acceptance.yaml` | Required cases, output/tool assertions and pass threshold |
+| Execution evidence | External results JSON | Actual output, tool calls, handoff and escalation |
+
+## Worked example: inquiry triage
+
+The example uses fictional rules: classify inquiries from supplied documents, cite the basis, and hand off missing rules to a human owner.
+
+Two contracts are checked:
+
+1. **Grounded response** — the agent must use `read:provided-documents`, must not write externally, and must not escalate.
+2. **Missing rule** — the agent must say that human confirmation is needed, must hand off to `human-owner`, and must escalate.
+
+![Example evaluation report](docs/assets/evaluation-report.png)
+
+Run the example yourself; the report above is an illustrative rendering of the included sample, not a live service or customer result.
+
 ## Quick start
 
 Requires Python 3.10+.
@@ -121,8 +147,12 @@ The test suite covers valid packages, real contract failures, missing results, p
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Contributions use Apache-2.0 with DCO sign-offs. Do not attach credentials, customer data or private enterprise material.
 
-## License
+## License and commercial authorization
 
 Copyright 2026 Xiamen FEEHO Intelligent Technology Co., Ltd.
 
-The open-source core is licensed under [Apache License 2.0](LICENSE). Commercial use is permitted. Separate enterprise agreements do not restrict the Apache-2.0 rights granted to this core.
+This open-source core is licensed under [Apache License 2.0](LICENSE). **Commercial use of this core is permitted under Apache-2.0; no separate permission is required for that use.** Apache-2.0 also includes an express patent-license provision, which is one reason we keep it instead of switching to MIT.
+
+A separate commercial agreement is required for the **enterprise product and services**: multi-employee organization operations, enterprise approval/audit, long-running Feishu/DingTalk/WeCom collaboration, industry role packs, private deployment and ongoing delivery services. Those are not included in this repository.
+
+An enterprise agreement cannot revoke the Apache-2.0 rights already granted for this core. See [COMMERCIAL.md](COMMERCIAL.md) for the exact boundary.
